@@ -3,9 +3,9 @@
 const removeEmptyLines = str => str.split(/\r?\n/).filter(line => line.trim() !== '').join('\n');
 
 function parsear(){
-  console.log("parsear")
+  // console.log("parsear")
   var file_url = './SkySpec210711.txt' + '?' + new Date().getTime();
-  console.log(file_url);
+  // console.log(file_url);
   fetch(file_url)
     .then(response => response.text())
     .then(text => csvToArray(text))
@@ -23,7 +23,7 @@ function pintarDiv(id, alerta){
     document.getElementById(id).style.color = "white";
   }else if (alerta==0){ // TODO OK!!
     document.getElementById(id).style.borderColor = "green";
-    document.getElementById(id).style.backgroundColor = "gray";
+    document.getElementById(id).style.backgroundColor = "LightGray";
     document.getElementById(id).style.color = "black";
   }else{ // NO HAY DATO!!
     document.getElementById(id).style.borderColor = "yellow";
@@ -35,7 +35,7 @@ function pintarDiv(id, alerta){
 
 function csvToArray(str, delimiter = " ") {
   // console.log("csvToArray")
-  console.log(str)
+  // console.log(str)
 
   str = removeEmptyLines(str)
 
@@ -99,7 +99,7 @@ function csvToArray(str, delimiter = " ") {
 // según límites dibujar alerta
 
 setInterval(function(){
-  console.log("timer!")
+  // console.log("timer!")
   parsear();
 }, 15000) /* time in milliseconds (ie 10 minutes) 2000=2s 300000=5min 600000=10min*/
 

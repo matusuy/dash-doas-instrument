@@ -1,8 +1,10 @@
 // https://sebhastian.com/javascript-csv-to-array/
 
+const removeEmptyLines = str => str.split(/\r?\n/).filter(line => line.trim() !== '').join('\n');
+
 function parsear(){
   console.log("parsear")
-  var file_url = './SkySpec210711.txt';
+  var file_url = './SkySpec210711.txt' + '?' + new Date().getTime();
   console.log(file_url);
   fetch(file_url)
     .then(response => response.text())
@@ -32,8 +34,11 @@ function pintarDiv(id, alerta){
 }
 
 function csvToArray(str, delimiter = " ") {
-  console.log("csvToArray")
+  // console.log("csvToArray")
   console.log(str)
+
+  str = removeEmptyLines(str)
+
   var headers = str.slice(0, str.indexOf("\n")).split(delimiter);
   var rows = str.slice(str.indexOf("\n") + 1).split("\n");
 
@@ -46,45 +51,40 @@ function csvToArray(str, delimiter = " ") {
     return el;
   });
 
-  console.log(arr)
+  // console.log(arr)
 
   var ultima_fila = arr[arr.length-1];
   var TempOutdoor = ultima_fila["TempOutdoor"];
-  console.log(ultima_fila["Date"]);
-  console.log(ultima_fila["Time"]);
-  console.log(TempOutdoor);
-
-// 12.13.2022 15:30:09 1014 27.16 24.97 5.43 20.003 -1 -1 7.28 0.007 341 -16204 -32 89.91 0.18 9 33.49 11.951 0 0.47 0.009 -1 -1 0.012 0 0.007 0 90 0 90 0 89.95 0
-
-  // var today = new Date();
-  // var dd = String(today.getDate()).padStart(2, '0');
-  // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  // var yyyy = today.getFullYear();
-  // today = mm + '/' + dd + '/' + yyyy;
-
-  // chequear fecha actula VS fecha ultima medida, si es mayor que 10 min alerta amarillo
-  // if fecha
-  //     pintarDiv('TempOutdoor', -1);
+  // console.log(ultima_fila["Date"]);
+  // console.log(ultima_fila["Time"]);
+  // console.log(TempOutdoor);
 
   var TEN_MINUTES = 10*60*1000;
   var [month, day, year] = ultima_fila["Date"].split('.');
   var [hh, mm, ss] = ultima_fila["Time"].split(':');
   var last_measure = new Date(+year, +month - 1, +day, +hh, +mm, +ss);
-  if (Date.now() - last_measure > TEN_MINUTES) {
+  var today = new Date();
+
+  document.getElementById('Last').innerHTML = last_measure.toLocaleString(); // .slice(0,10)
+  document.getElementById('Now').innerHTML = today.toLocaleString(); // .slice(0,10)
+
+  if (today - last_measure > TEN_MINUTES) {
     console.log("Date ERROR");
+    pintarDiv('DateTime', 1);
   }else{
     console.log("Date OK");
+    pintarDiv('DateTime', 0);
   }
-  console.log(Date.now())
-  console.log(last_measure)
+  // console.log(today)
+  // console.log(last_measure)
 
   document.getElementById('TempOutdoor').innerHTML = TempOutdoor.toString(2) + " ºC";
 
   if (TempOutdoor < 5){
-    console.log("if error");
-    pintarDiv('TempOutdoor', 1);
+    // console.log("if error");
+    pintarDiv('Temp', 1);
   }else{
-    pintarDiv('TempOutdoor', 0);
+    pintarDiv('Temp', 0);
   }
 
   // return the array

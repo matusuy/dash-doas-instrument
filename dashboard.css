@@ -5,6 +5,8 @@ body {
 .DashItem {
   width: 20%;
   height: 20%;
+  min-height: 20%;
+  min-width: 20%;
   float: left;
   text-align: center;
   border-style: solid;

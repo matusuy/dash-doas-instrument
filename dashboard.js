@@ -69,10 +69,10 @@ function csvToArray(str, delimiter = " ") {
   document.getElementById('Now').innerHTML = today.toLocaleString(); // .slice(0,10)
 
   if (today - last_measure > TEN_MINUTES) {
-    console.log("Date ERROR");
+    // console.log("Date ERROR");
     pintarDiv('DateTime', 1);
   }else{
-    console.log("Date OK");
+    // console.log("Date OK");
     pintarDiv('DateTime', 0);
   }
   // console.log(today)

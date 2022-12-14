@@ -54,7 +54,22 @@ function csvToArray(str, delimiter = " ") {
   // console.log(arr)
 
   var ultima_fila = arr[arr.length-1];
-  var TempOutdoor = ultima_fila["TempOutdoor"];
+  var TempOutdoor           = ultima_fila["TempOutdoor"];
+  var TempSpectrometer      = ultima_fila["TempSpectrometer"];
+  var HumidityOnElectronics = ultima_fila["HumidityOnElectronics"];
+  var TempElectronics       = ultima_fila["TempElectronics"];
+  var TempSpectrometerNoise = ultima_fila["TempSpectrometerNoise"];
+  var SupplyVoltage         = ultima_fila["SupplyVoltage"];
+  var CurrentTotal          = ultima_fila["CurrentTotal"];
+  var PeltierPower          = ultima_fila["PeltierPower"];
+
+  var ultima_fila_menos_1 = arr[arr.length-2];
+  var ultima_fila_menos_2 = arr[arr.length-3];
+  var ElevationAngle1 = ultima_fila_menos_2["ElevationAngle"];
+  var ElevationAngle2 = ultima_fila_menos_1["ElevationAngle"];
+  var ElevationAngle3 = ultima_fila["ElevationAngle"];
+
+
   // console.log(ultima_fila["Date"]);
   // console.log(ultima_fila["Time"]);
   // console.log(TempOutdoor);
@@ -78,14 +93,45 @@ function csvToArray(str, delimiter = " ") {
   // console.log(today)
   // console.log(last_measure)
 
-  document.getElementById('TempOutdoor').innerHTML = TempOutdoor.toString(2) + " ºC";
+  document.getElementById('TempOutdoor').innerHTML           = TempOutdoor.toString(2) + " ºC";
+  document.getElementById('TempSpectrometer').innerHTML      = TempSpectrometer.toString(2) + " ºC";
+  document.getElementById('HumidityOnElectronics').innerHTML = HumidityOnElectronics.toString(2) + " %";
+  document.getElementById('TempElectronics').innerHTML       = TempElectronics.toString(2) + " ºC";
+  document.getElementById('TempSpectrometerNoise').innerHTML = TempSpectrometerNoise.toString(2) + " ºC";
+  document.getElementById('SupplyVoltage').innerHTML         = SupplyVoltage.toString(2) + " V";
+  document.getElementById('CurrentTotal').innerHTML          = CurrentTotal.toString(2) + " A";
+  document.getElementById('PeltierPower').innerHTML          = PeltierPower.toString(2) + " W";
 
-  if (TempOutdoor < 5){
-    // console.log("if error");
-    pintarDiv('Temp', 1);
-  }else{
-    pintarDiv('Temp', 0);
-  }
+  document.getElementById('ElevationAngle1').innerHTML       = ElevationAngle1.toString(2) + " º";
+  document.getElementById('ElevationAngle2').innerHTML       = ElevationAngle2.toString(2) + " º";
+  document.getElementById('ElevationAngle3').innerHTML       = ElevationAngle3.toString(2) + " º";
+
+
+  // ((a < b) ? 'minor' : 'major')
+
+  TempOutdoor      < 5 ? pintarDiv('Temp', 1) : pintarDiv('Temp', 0);
+  TempSpectrometer < 5 ? pintarDiv('Temp', 1) : pintarDiv('Temp', 0);
+
+  HumidityOnElectronics < 5 ? pintarDiv('Electronics', 1) : pintarDiv('Electronics', 0);
+  TempElectronics       < 5 ? pintarDiv('Electronics', 1) : pintarDiv('Electronics', 0);
+  TempSpectrometerNoise < 5 ? pintarDiv('Electronics', 1) : pintarDiv('Electronics', 0);
+
+  SupplyVoltage < 5 ? pintarDiv('Supply', 1) : pintarDiv('Supply', 0);
+
+  CurrentTotal < 5 ? pintarDiv('Current', 1) : pintarDiv('Current', 0);
+
+  PeltierPower < 5 ? pintarDiv('Peltier', 1) : pintarDiv('Peltier', 0);
+
+  ElevationAngle1 < 5 ? pintarDiv('ElevationAngle', 1) : pintarDiv('ElevationAngle', 0);
+  ElevationAngle2 < 5 ? pintarDiv('ElevationAngle', 1) : pintarDiv('ElevationAngle', 0);
+  ElevationAngle3 < 5 ? pintarDiv('ElevationAngle', 1) : pintarDiv('ElevationAngle', 0);
+
+
+  // if (TempOutdoor < 5){
+  //   pintarDiv('Temp', 1);
+  // }else{
+  //   pintarDiv('Temp', 0);
+  // }
 
   // return the array
   return arr;
@@ -106,8 +152,8 @@ setInterval(function(){
 document.addEventListener("DOMContentLoaded", function(event) { 
 
   // mandar al css
-  document.getElementById('TempOutdoor').style.borderWidth = "thick";
-  document.getElementById('TempOutdoor').style.borderStyle = "solid";
+  // document.getElementById('TempOutdoor').style.borderWidth = "thick";
+  // document.getElementById('TempOutdoor').style.borderStyle = "solid";
 
   parsear();
 });

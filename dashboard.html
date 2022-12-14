@@ -7,29 +7,75 @@
 
 <body>
 
-    <div class="DashItem" id="DateTime">
-        <h2>DATE</h2>
-        <div class="class">
-        <h4>LAST</h4>
-        <p id="Last"></p>
+    <div class="flex-container">
+
+        <div class="DashItem" id="DateTime">
+            <h2>DATE</h2>
+            <div class="DashElement">
+            <h4>LAST</h4>
+            <p id="Last"></p>
+            </div>
+            <div class="DashElement">
+            <h4>NOW</h4>
+            <p id="Now"></p>
+            </div>
         </div>
-        <div class="class">
-        <h4>NOW</h4>
-        <p id="Now"></p>
+
+        <div class="DashItem" id="Temp">
+            <h2>TEMP</h2>
+            <div class="DashElement">
+            <h4>Outdoor</h4>
+            <p id="TempOutdoor"></p>
+            </div>
+            <div class="DashElement">
+            <h4>Spectrometer</h4>
+            <p id="TempSpectrometer"></p>
+            </div>
+        </div>
+
+        <div class="DashItem" id="Electronics">
+            <h2>Electronics</h2>
+            <div class="DashElement">
+            <h4>Humidity</h4>
+            <p id="HumidityOnElectronics"></p>
+            </div>
+            <div class="DashElement">
+            <h4>TempElect</h4>
+            <p id="TempElectronics"></p>
+            </div>
+            <div class="DashElement">
+            <h4>TempNoise</h4>
+            <p id="TempSpectrometerNoise"></p>
+            </div>
+        </div>
+    
+    </div>
+
+    <div class="flex-container">
+        <div class="DashItem" id="Supply">
+            <h2>Supply Voltage</h2>
+            <p class="big_text" id="SupplyVoltage"></p>
+        </div>
+
+        <div class="DashItem" id="Current">
+            <h2>Current Total</h2>
+            <p class="big_text" id="CurrentTotal"></p>
+        </div>
+
+        <div class="DashItem" id="ElevationAngle">
+            <h2>Elevation Angle</h2>
+            <p id="ElevationAngle1"></p>
+            <p id="ElevationAngle2"></p>
+            <p id="ElevationAngle3"></p>
         </div>
     </div>
 
-    <div class="DashItem" id="Temp">
-        <h2>TEMP</h2>
-        <div class="class">
-        <h4>TempOutdoor</h4>
-        <p id="TempOutdoor"></p>
+    <div class="flex-container">
+        <div class="DashItem" id="Peltier">
+            <h2>Peltier Power</h2>
+            <p class="big_text" id="PeltierPower"></p>
         </div>
-        <div class="class">
-        <h4>TempSpectrometer</h4>
-        <p id="TempSpectrometer"></p>
-        </div>
-    </html>
+    </div>
 
     <script src="./dashboard.js"></script>
 </body>

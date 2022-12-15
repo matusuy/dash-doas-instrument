@@ -18,9 +18,11 @@ function pintarDiv(id, alerta){
   // alerta -1: No hay dato nuevo, alerta!
 
   if (alerta==1){ // ERROR!
+    console.log("Alerta en " + id)
     document.getElementById(id).style.borderColor = "red";
     document.getElementById(id).style.backgroundColor = "red";
     document.getElementById(id).style.color = "white";
+    // alertas_obj[p_alerta] = true;
   }else if (alerta==0){ // TODO OK!!
     document.getElementById(id).style.borderColor = "green";
     document.getElementById(id).style.backgroundColor = "LightGray";
@@ -106,42 +108,77 @@ function csvToArray(str, delimiter = " ") {
   document.getElementById('ElevationAngle2').innerHTML       = ElevationAngle2.toString(2) + " º";
   document.getElementById('ElevationAngle3').innerHTML       = ElevationAngle3.toString(2) + " º";
 
+  // Reseteo alertas
+  var TempAlert_msg           = '';
+  var ElectronicsAlert_msg    = '';
+  var SupplyAlert_msg         = '';
+  var CurrentAlert_msg        = '';
+  var ElevationAngleAlert_msg = '';
+  var PeltierAlert_msg        = '';
+
+  // alerta 1: parametro fuera de rango
+  // alerta 0: Todo OK
+  // alerta -1: No hay dato nuevo, alerta!
 
   // ((a < b) ? 'minor' : 'major')
+
+  // TEMP
+
+  if (TempOutdoor > TempSpectrometer + 10) {TempAlert_msg = TempAlert_msg + "\nALERT for overPower";}
+  if (TempSpectrometer > 25)               {TempAlert_msg = TempAlert_msg + "\nALERT for overTemp";}
+
+  if (TempAlert_msg === ''){
+    pintarDiv('Temp', 0);
+  }else{
+    pintarDiv('Temp', 1);
+    console.log(TempAlert_msg)
+  }
+
+  // }else if (TempSpectrometer > 25) {
+  //   pintarDiv('Temp', 1)
+  //   TempAlert_msg = TempAlert_msg + "\nALERT for overTemp";
+  // }else{
+  //   pintarDiv('Temp', 0)
+  // }
+
   // If outdoor temperature > internal temperature + 10 degC, then ALERT for overpower ----> CHECK THIS CONDITION PLEASE!!!!
-  TempOutdoor  < TempSpectrometer + 10 ? pintarDiv('Temp', 0) : pintarDiv('Temp', 1);
+  // TempOutdoor > TempSpectrometer + 10 ? pintarDiv('Temp', 1) : pintarDiv('Temp', 0);
   
   // If temperature of spectrometer > 25 degC, then ALERT
-  TempSpectrometer < 25 ? pintarDiv('Temp', 0) : pintarDiv('Temp', 1);
+  // TempSpectrometer > 25 ? pintarDiv('Temp', 1) : pintarDiv('Temp', 0);
+
+  // ELECTRONICS
 
   // If humidity on Electronics > 75%, then ALERT for wet day, corrosion problems
-  HumidityOnElectronics < 75 ? pintarDiv('Electronics', 0) : pintarDiv('Electronics', 1);
+  HumidityOnElectronics > 75 ? pintarDiv('Electronics', 1) : pintarDiv('Electronics', 0);
   // If humidity on Electronics < 10%, then ALERT for dry day, spark problems
   HumidityOnElectronics < 10 ? pintarDiv('Electronics', 1) : pintarDiv('Electronics', 0);
   
   // If temperature of electronics > 55deg, then potential problems of cooling can appear
-  TempElectronics < 55 ? pintarDiv('Electronics', 0) : pintarDiv('Electronics', 1);
+  TempElectronics > 55 ? pintarDiv('Electronics', 1) : pintarDiv('Electronics', 0);
   
   // 2212 MO: I need to understand better what this means, so for now I am going to comment this line
   //TempSpectrometerNoise < 5 ? pintarDiv('Electronics', 1) : pintarDiv('Electronics', 0);
   
   // If supply voltage > 12.5 V, potential problem of overvoltage
-  SupplyVoltage < 12.5 ? pintarDiv('Supply', 0) : pintarDiv('Supply', 1);
+  SupplyVoltage > 12.5 ? pintarDiv('Supply', 1) : pintarDiv('Supply', 0);
   // If supply voltage < 11.4 V, potential problem of low power
   SupplyVoltage < 11.4 ? pintarDiv('Supply', 1) : pintarDiv('Supply', 0);
 
   // If current > 2 A (in regimen, needs to be checked), then potential problem of overcurrent
-  CurrentTotal < 2 ? pintarDiv('Current', 0) : pintarDiv('Current', 1);
+  CurrentTotal > 2 ? pintarDiv('Current', 1) : pintarDiv('Current', 0);
   // If current < 0.05 A (in regimen, needs to be checked), then potential problem of electronics
   CurrentTotal < 0.05 ? pintarDiv('Current', 1) : pintarDiv('Current', 0);
 
   // 2212 MO: I am not going to put an alert on this for now
   //PeltierPower < 5 ? pintarDiv('Peltier', 1) : pintarDiv('Peltier', 0);
+  pintarDiv('Peltier', 0)
 
   // 2212 MO: No need of put an alert here, just to have real time information
   //ElevationAngle1 < 5 ? pintarDiv('ElevationAngle', 1) : pintarDiv('ElevationAngle', 0);
   //ElevationAngle2 < 5 ? pintarDiv('ElevationAngle', 1) : pintarDiv('ElevationAngle', 0);
   //ElevationAngle3 < 5 ? pintarDiv('ElevationAngle', 1) : pintarDiv('ElevationAngle', 0);
+  // pintarDiv('ElevationAngle', 0)
 
   // if (TempOutdoor < 5){
   //   pintarDiv('Temp', 1);
@@ -166,6 +203,9 @@ setInterval(function(){
 }, 15000) /* time in milliseconds (ie 10 minutes) 2000=2s 300000=5min 600000=10min*/
 
 document.addEventListener("DOMContentLoaded", function(event) { 
+
+  pintarDiv('Peltier', 0)
+  pintarDiv('ElevationAngle', 0)
 
   // mandar al css
   // document.getElementById('TempOutdoor').style.borderWidth = "thick";

@@ -116,6 +116,10 @@ function csvToArray(str, delimiter = " ") {
   var ElevationAngleAlert_msg = '';
   var PeltierAlert_msg        = '';
 
+  document.getElementById('TempAlert').innerHTML = '';
+  document.getElementById('CurrentAlert').innerHTML = '';
+
+
   // alerta 1: parametro fuera de rango
   // alerta 0: Todo OK
   // alerta -1: No hay dato nuevo, alerta!
@@ -131,6 +135,7 @@ function csvToArray(str, delimiter = " ") {
     pintarDiv('Temp', 0);
   }else{
     pintarDiv('Temp', 1);
+    document.getElementById('TempAlert').innerHTML = TempAlert_msg;
     console.log(TempAlert_msg)
   }
 
@@ -166,9 +171,20 @@ function csvToArray(str, delimiter = " ") {
   SupplyVoltage < 11.4 ? pintarDiv('Supply', 1) : pintarDiv('Supply', 0);
 
   // If current > 2 A (in regimen, needs to be checked), then potential problem of overcurrent
-  CurrentTotal > 2 ? pintarDiv('Current', 1) : pintarDiv('Current', 0);
+  // CurrentTotal > 2 ? pintarDiv('Current', 1) : pintarDiv('Current', 0);
   // If current < 0.05 A (in regimen, needs to be checked), then potential problem of electronics
-  CurrentTotal < 0.05 ? pintarDiv('Current', 1) : pintarDiv('Current', 0);
+  // CurrentTotal < 0.05 ? pintarDiv('Current', 1) : pintarDiv('Current', 0);
+
+  if (CurrentTotal > 2)    {CurrentAlert_msg = CurrentAlert_msg + "\nPotential problem of overcurrent";}
+  if (CurrentTotal < 0.05) {CurrentAlert_msg = CurrentAlert_msg + "\nPotential problem of electronics";}
+
+  if (CurrentAlert_msg === ''){
+    pintarDiv('Current', 0);
+  }else{
+    pintarDiv('Current', 1);
+    document.getElementById('CurrentAlert').innerHTML = CurrentAlert_msg;
+    console.log(CurrentAlert_msg)
+  }
 
   // 2212 MO: I am not going to put an alert on this for now
   //PeltierPower < 5 ? pintarDiv('Peltier', 1) : pintarDiv('Peltier', 0);

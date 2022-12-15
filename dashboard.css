@@ -18,6 +18,23 @@ body {
   /*margin-top: 0.5%;*/
 }
 
+.Instrument {
+  width: 30vw;
+  height: 30vh;
+  /*min-height: 20%;*/
+  /*min-width: 20%;*/
+  float: left;
+  /*display: inline-block*/
+  /*display: block;*/
+  text-align: center;
+  font-size: 1em;
+  /*font-family: verdana;*/
+  border-style: solid;
+  border-color: black;
+  margin: 0.9vh 1.2vw 0.9vh 1.2vw;
+  /*margin-top: 0.5%;*/
+}
+
 .DashElement {
   display: inline-block;
 }
@@ -34,9 +51,33 @@ h2 {
   margin-bottom: 1vh;
 }
 
+nt {
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+nt2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
 .padding_left {
   /*margin: 0;*/
   /*padding-left: 32vw;*/
+}
+
+.grafica-div {
+  padding-bottom: 15px;
+}
+
+.grafica-img {
+  background-color: #f3f3ff;
+  height: 50%;
+  width: 50%;
 }
 
 /*.DashItem {

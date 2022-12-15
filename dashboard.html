@@ -12,7 +12,7 @@
         <div class="DashItem" id="DateTime">
             <h2>DATE</h2>
             <div class="DashElement">
-            <h4>LAST</h4>
+            <h4>Last</h4>
             <p id="Last"></p>
             </div>
             <div class="DashElement">
@@ -40,7 +40,7 @@
             <p id="HumidityOnElectronics"></p>
             </div>
             <div class="DashElement">
-            <h4>TempElect</h4>
+            <h4>Temperature</h4>
             <p id="TempElectronics"></p>
             </div>
             <div class="DashElement">
@@ -66,7 +66,7 @@
             <h2>Elevation Angle</h2>
             <p id="ElevationAngle1"></p>
             <p id="ElevationAngle2"></p>
-            <p id="ElevationAngle3"></p>
+            <nt2>Last: </nt2><p id="ElevationAngle3"></p>
         </div>
     </div>
 
@@ -77,7 +77,29 @@
         </div>
     </div>
 
-    <script src="./dashboard.js"></script>
+    <div class="flex-container">
+        <div class="Instrument" id="InstrData">
+            <h2>Instrument</h2>
+			<div><nt>Name: AIRYX</nt></div>
+			<div><nt>WL: 300 nm to 500 nm</nt></div>
+			<div><nt>Location: FING-UDELAR</nt></div>
+			<div><nt>Coordinates: Lat: -34.916º || Lon: -56.167º || Alt: 61 m</nt></div>
+			<div><nt>Viewing direction: 270 deg - Ramírez Beach</nt></div>
+        </div>
+    </div>
+	
+	<div class="flex-container">
+        <div class="Instrument" id="About">
+			<nt2>Applied Optics Group</nt2>
+			<div class="grafica-div">
+				<img class="grafica-img" src="./logo.png" width="100px" height="200px">
+			</div>
+			<div><nt>Contact:</nt></div>
+			<div><nt>efrins@fing.edu.uy || ncasabal@fing.edu.uy</nt></div>
+        </div>
+    </div>
+	
+	<script src="./dashboard.js"></script>
 </body>
 
 </html>

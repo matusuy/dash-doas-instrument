@@ -74,7 +74,7 @@ function csvToArray(str, delimiter = " ") {
   // console.log(ultima_fila["Time"]);
   // console.log(TempOutdoor);
 
-  var TEN_MINUTES = 10*60*1000;
+  var NEW_DATA_MINUTES = 15*60*1000; // the first number is minutes
   var [month, day, year] = ultima_fila["Date"].split('.');
   var [hh, mm, ss] = ultima_fila["Time"].split(':');
   var last_measure = new Date(+year, +month - 1, +day, +hh, +mm, +ss);
@@ -83,9 +83,9 @@ function csvToArray(str, delimiter = " ") {
   document.getElementById('Last').innerHTML = last_measure.toLocaleString(); // .slice(0,10)
   document.getElementById('Now').innerHTML = today.toLocaleString(); // .slice(0,10)
 
-  if (today - last_measure > TEN_MINUTES) {
+  if (today - last_measure > NEW_DATA_MINUTES) {
     // console.log("Date ERROR");
-    pintarDiv('DateTime', 1);
+    pintarDiv('DateTime', -1);
   }else{
     // console.log("Date OK");
     pintarDiv('DateTime', 0);
@@ -108,24 +108,40 @@ function csvToArray(str, delimiter = " ") {
 
 
   // ((a < b) ? 'minor' : 'major')
+  // If outdoor temperature > internal temperature + 10 degC, then ALERT for overpower ----> CHECK THIS CONDITION PLEASE!!!!
+  TempOutdoor  < TempSpectrometer + 10 ? pintarDiv('Temp', 0) : pintarDiv('Temp', 1);
+  
+  // If temperature of spectrometer > 25 degC, then ALERT
+  TempSpectrometer < 25 ? pintarDiv('Temp', 0) : pintarDiv('Temp', 1);
 
-  TempOutdoor      < 5 ? pintarDiv('Temp', 1) : pintarDiv('Temp', 0);
-  TempSpectrometer < 5 ? pintarDiv('Temp', 1) : pintarDiv('Temp', 0);
+  // If humidity on Electronics > 75%, then ALERT for wet day, corrosion problems
+  HumidityOnElectronics < 75 ? pintarDiv('Electronics', 0) : pintarDiv('Electronics', 1);
+  // If humidity on Electronics < 10%, then ALERT for dry day, spark problems
+  HumidityOnElectronics < 10 ? pintarDiv('Electronics', 1) : pintarDiv('Electronics', 0);
+  
+  // If temperature of electronics > 55deg, then potential problems of cooling can appear
+  TempElectronics < 55 ? pintarDiv('Electronics', 0) : pintarDiv('Electronics', 1);
+  
+  // 2212 MO: I need to understand better what this means, so for now I am going to comment this line
+  //TempSpectrometerNoise < 5 ? pintarDiv('Electronics', 1) : pintarDiv('Electronics', 0);
+  
+  // If supply voltage > 12.5 V, potential problem of overvoltage
+  SupplyVoltage < 12.5 ? pintarDiv('Supply', 0) : pintarDiv('Supply', 1);
+  // If supply voltage < 11.4 V, potential problem of low power
+  SupplyVoltage < 11.4 ? pintarDiv('Supply', 1) : pintarDiv('Supply', 0);
 
-  HumidityOnElectronics < 5 ? pintarDiv('Electronics', 1) : pintarDiv('Electronics', 0);
-  TempElectronics       < 5 ? pintarDiv('Electronics', 1) : pintarDiv('Electronics', 0);
-  TempSpectrometerNoise < 5 ? pintarDiv('Electronics', 1) : pintarDiv('Electronics', 0);
+  // If current > 2 A (in regimen, needs to be checked), then potential problem of overcurrent
+  CurrentTotal < 2 ? pintarDiv('Current', 0) : pintarDiv('Current', 1);
+  // If current < 0.05 A (in regimen, needs to be checked), then potential problem of electronics
+  CurrentTotal < 0.05 ? pintarDiv('Current', 1) : pintarDiv('Current', 0);
 
-  SupplyVoltage < 5 ? pintarDiv('Supply', 1) : pintarDiv('Supply', 0);
+  // 2212 MO: I am not going to put an alert on this for now
+  //PeltierPower < 5 ? pintarDiv('Peltier', 1) : pintarDiv('Peltier', 0);
 
-  CurrentTotal < 5 ? pintarDiv('Current', 1) : pintarDiv('Current', 0);
-
-  PeltierPower < 5 ? pintarDiv('Peltier', 1) : pintarDiv('Peltier', 0);
-
-  ElevationAngle1 < 5 ? pintarDiv('ElevationAngle', 1) : pintarDiv('ElevationAngle', 0);
-  ElevationAngle2 < 5 ? pintarDiv('ElevationAngle', 1) : pintarDiv('ElevationAngle', 0);
-  ElevationAngle3 < 5 ? pintarDiv('ElevationAngle', 1) : pintarDiv('ElevationAngle', 0);
-
+  // 2212 MO: No need of put an alert here, just to have real time information
+  //ElevationAngle1 < 5 ? pintarDiv('ElevationAngle', 1) : pintarDiv('ElevationAngle', 0);
+  //ElevationAngle2 < 5 ? pintarDiv('ElevationAngle', 1) : pintarDiv('ElevationAngle', 0);
+  //ElevationAngle3 < 5 ? pintarDiv('ElevationAngle', 1) : pintarDiv('ElevationAngle', 0);
 
   // if (TempOutdoor < 5){
   //   pintarDiv('Temp', 1);

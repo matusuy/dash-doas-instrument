@@ -11,32 +11,38 @@
 
         <div class="DashItem" id="DateTime">
             <h2>Date</h2>
-            <div class="DashElement">
-            <h4>Last</h4>
-            <p id="Last"></p>
-            </div>
-            <div class="DashElement">
-            <h4>NOW</h4>
-            <p id="Now"></p>
-            </div>
-            <p id="DateTimeAlert"></p>
+            <table class="center_table_2">
+                <tbody>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><h4>Last</h4></td>
+                    <td class="table_item_2_3"><p id="Last"></p></td>
+                  </tr>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><h4>NOW</h4></td>
+                    <td class="table_item_2_3"><p id="Now"></p></td>
+                  </tr>
+                </tbody>
+            </table>
+            <p class="AlertMsg" id="DateTimeAlert"></p>
         </div>
 
         <div class="DashItem" id="Temp">
             <h2>Temperature</h2>
-            <div class="DashElement">
-            <h4>Outdoor</h4>
-            <p id="TempOutdoor"></p>
-            </div>
-            <div class="DashElement">
-            <h4>Spectro</h4>
-            <p id="TempSpectrometer"></p>
-            </div>
-			<div class="DashElement">
-            <h4>OpsSetPoint</h4>
-            <p>20ºC</p>
-            </div>
-			<!-- <p id="TempAlert"></p>  NO SE DE DEONDE SALE ESTO -->   
+            <table class="center_table_3">
+                <tbody>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><h4>Outdoor</h4></td>
+                    <td class="table_item_3"><h4>Spectro</h4></td>
+                    <td class="table_item_3"><h4>OpsSetPoint</h4></td>
+                  </tr>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><p id="TempOutdoor"></p></td>
+                    <td class="table_item_3"><p id="TempSpectrometer"></p></td>
+                    <td class="table_item_3"><p>20 ºC</p></td>
+                  </tr>
+                </tbody>
+            </table>
+			<p class="AlertMsg" id="TempAlert"></p>
         </div>
 
         <div class="DashItem" id="Electronics">
@@ -53,7 +59,7 @@
             <h4>TempNoise</h4>
             <p id="TempSpectrometerNoise"></p>
             </div>
-            <p id="ElectronicsAlert"></p>
+            <p class="AlertMsg" id="ElectronicsAlert"></p>
         </div>
     
     </div>
@@ -62,13 +68,13 @@
         <div class="DashItem" id="Supply">
             <h2>Supply Voltage</h2>
             <p class="big_text" id="SupplyVoltage"></p>
-            <p id="SupplyAlert"></p>
+            <p class="AlertMsg" id="SupplyAlert"></p>
         </div>
 
         <div class="DashItem" id="Current">
             <h2>Current Total</h2>
             <p class="big_text" id="CurrentTotal"></p>
-            <p id="CurrentAlert"></p>
+            <p class="AlertMsg" id="CurrentAlert"></p>
         </div>
 
         <div class="DashItem" id="ElevationAngle">
@@ -76,7 +82,7 @@
             <p id="ElevationAngle1"></p>
             <p id="ElevationAngle2"></p>
             <nt2>Last: </nt2><p id="ElevationAngle3"></p>
-            <p id="ElevationAngleAlert"></p>
+            <p class="AlertMsg" id="ElevationAngleAlert"></p>
         </div>
     </div>
 
@@ -84,29 +90,33 @@
         <div class="DashItem" id="Peltier">
             <h2>Peltier Power</h2>
             <p class="big_text" id="PeltierPower"></p>
-            <p id="PeltierAlert"></p>
+            <p class="AlertMsg" id="PeltierAlert"></p>
         </div>
     </div>
 
     <div class="flex-container">
-        <div class="Instrument" id="InstrData">
+        <div class="DashItem" id="InstrData">
             <h2>Instrument</h2>
-			<div><nt>Name: AIRYX</nt></div>
-			<div><nt>WL: 300 nm to 500 nm</nt></div>
-			<div><nt>Location: FING-UDELAR</nt></div>
-			<div><nt>Coordinates: Lat: -34.916º || Lon: -56.167º || Alt: 61 m</nt></div>
-			<div><nt>Viewing direction: 270 deg - Ramírez Beach</nt></div>
+            <div class="Instrument">
+			  <p class="nt">Name: AIRYX</p>
+			  <p class="nt">WL: 300 nm to 500 nm</p>
+			  <p class="nt">Location: FING-UDELAR</p>
+			  <p class="nt">Coordinates: Lat: -34.916º || Lon: -56.167º || Alt: 61 m</p>
+			  <p class="nt">Viewing direction: 270 deg - Ramírez Beach</p>
+            </div>
         </div>
     </div>
 	
 	<div class="flex-container">
-        <div class="Instrument" id="About">
-			<nt2>Applied Optics Group</nt2>
-			<div class="grafica-div">
-				<img class="grafica-img" src="./logo.png" width="100px" height="200px">
-			</div>
-			<div><nt>Contact:</nt></div>
-			<div><nt>efrins@fing.edu.uy || ncasabal@fing.edu.uy</nt></div>
+        <div class="DashItem" id="About">
+            <div class="Instrument">
+    			<h2>Applied Optics Group</h2>
+    			<div class="grafica-div">
+    				<!-- <img class="grafica-img" src="./logo.png" width="100px" height="200px"> -->
+    			</div>
+    			<p class="nt">Contact:</p>
+    			<p class="nt">efrins@fing.edu.uy || ncasabal@fing.edu.uy</p>
+            </div>
         </div>
     </div>
 	

@@ -4,7 +4,7 @@ const removeEmptyLines = str => str.split(/\r?\n/).filter(line => line.trim() !=
 
 function parsear(){
   // console.log("parsear")
-  var file_url = './SkySpec221216.txt' + '?' + new Date().getTime();
+  var file_url = './SkySpec.txt' + '?' + new Date().getTime();
   // console.log(file_url);
   fetch(file_url)
     .then(response => response.text())

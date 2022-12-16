@@ -1,5 +1,5 @@
 // https://sebhastian.com/javascript-csv-to-array/
-
+// colors HTML: https://htmlcolorcodes.com/
 const removeEmptyLines = str => str.split(/\r?\n/).filter(line => line.trim() !== '').join('\n');
 
 function parsear(){
@@ -17,20 +17,20 @@ function pintarDiv(id, alerta){
   // alerta 0: Todo OK
   // alerta -1: No hay dato nuevo, alerta!
 
-  if (alerta==1){ // ERROR!
+  if (alerta==1){ // ERROR! -> ROJO
     console.log("Alerta en " + id)
-    document.getElementById(id).style.borderColor = "red";
-    document.getElementById(id).style.backgroundColor = "red";
-    document.getElementById(id).style.color = "white";
+    document.getElementById(id).style.borderColor = "#d70d0d";
+	document.getElementById(id).style.backgroundColor = "#d70d0d";
+    document.getElementById(id).style.color = "black";
     // alertas_obj[p_alerta] = true;
-  }else if (alerta==0){ // TODO OK!!
-    document.getElementById(id).style.borderColor = "green";
-    document.getElementById(id).style.backgroundColor = "LightGray";
-    document.getElementById(id).style.color = "black";
-  }else{ // NO HAY DATO!!
-    document.getElementById(id).style.borderColor = "yellow";
-    document.getElementById(id).style.backgroundColor = "yellow";
-    document.getElementById(id).style.color = "black";
+  }else if (alerta==0){ // TODO OK!! -> VERDE
+    document.getElementById(id).style.borderColor = "#199c04";
+	document.getElementById(id).style.backgroundColor = "#199c04";
+	document.getElementById(id).style.color = "white";
+  }else{ // NO HAY DATO!! -> AMARILLO
+	document.getElementById(id).style.borderColor = "#a3950d";
+    document.getElementById(id).style.backgroundColor = "#a3950d";
+	document.getElementById(id).style.color = "black";
   }
 
 }
@@ -76,7 +76,8 @@ function csvToArray(str, delimiter = " ") {
   // console.log(ultima_fila["Time"]);
   // console.log(TempOutdoor);
 
-  var NEW_DATA_MINUTES = 15*60*1000; // the first number is minutes
+  var CHECK_EVERY_MINS = 15; // INPUT: CHECK EVERY XX MINUTES
+  var NEW_DATA_MINUTES = CHECK_EVERY_MINS*60*1000; // the first number is minutes
   var [month, day, year] = ultima_fila["Date"].split('.');
   var [hh, mm, ss] = ultima_fila["Time"].split(':');
   var last_measure = new Date(+year, +month - 1, +day, +hh, +mm, +ss);
@@ -222,6 +223,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   pintarDiv('Peltier', 0)
   pintarDiv('ElevationAngle', 0)
+  
+ 
+  //pintarDiv('DateTime', 0)
+  //pintarDiv('Temp', 0)
+  //pintarDiv('Electronics', 0)
+  //pintarDiv('Supply', 0)
+  //pintarDiv('Current', 0)
 
   // mandar al css
   // document.getElementById('TempOutdoor').style.borderWidth = "thick";

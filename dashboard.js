@@ -75,7 +75,7 @@ function csvToArray(str, delimiter = " ") {
   // console.log(ultima_fila["Date"]);
   // console.log(ultima_fila["Time"]);
   // console.log(TempOutdoor);
-
+  var SET_POINT_TEMP_SPEC = 20; // INPUT: SET POINT OF OPERATION OF SPECTROMETER
   var CHECK_EVERY_MINS = 15; // INPUT: CHECK EVERY XX MINUTES
   var NEW_DATA_MINUTES = CHECK_EVERY_MINS*60*1000; // the first number is minutes
   var [month, day, year] = ultima_fila["Date"].split('.');
@@ -130,8 +130,9 @@ function csvToArray(str, delimiter = " ") {
   // TEMP
 
   if (TempOutdoor > TempSpectrometer + 10) {TempAlert_msg = TempAlert_msg + "\nALERT for overPower";}
-  if (TempSpectrometer > 25)               {TempAlert_msg = TempAlert_msg + "\nALERT for overTemp";}
-
+  if (TempSpectrometer > SET_POINT_TEMP_SPEC+1)               {TempAlert_msg = TempAlert_msg + "\nALERT for overTemp";}
+  if (TempSpectrometer < SET_POINT_TEMP_SPEC-1)               {TempAlert_msg = TempAlert_msg + "\nALERT for lowTemp";}
+  
   if (TempAlert_msg === ''){
     pintarDiv('Temp', 0);
   }else{
@@ -149,9 +150,6 @@ function csvToArray(str, delimiter = " ") {
 
   // If outdoor temperature > internal temperature + 10 degC, then ALERT for overpower ----> CHECK THIS CONDITION PLEASE!!!!
   // TempOutdoor > TempSpectrometer + 10 ? pintarDiv('Temp', 1) : pintarDiv('Temp', 0);
-  
-  // If temperature of spectrometer > 25 degC, then ALERT
-  // TempSpectrometer > 25 ? pintarDiv('Temp', 1) : pintarDiv('Temp', 0);
 
   // ELECTRONICS
 
@@ -226,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   
  
   //pintarDiv('DateTime', 0)
-  //pintarDiv('Temp', 0)
+  pintarDiv('Temp', 0)
   //pintarDiv('Electronics', 0)
   //pintarDiv('Supply', 0)
   //pintarDiv('Current', 0)

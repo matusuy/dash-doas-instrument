@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Custom CSS -->
+    <link href="./dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="flex-container">
+
+        <div class="DashItem" id="DateTime">
+            <h2>Date</h2>
+            <table class="center_table_2">
+                <tbody>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><h4>Last</h4></td>
+                    <td class="table_item_2_3"><p id="Last"></p></td>
+                  </tr>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><h4>NOW</h4></td>
+                    <td class="table_item_2_3"><p id="Now"></p></td>
+                  </tr>
+                </tbody>
+            </table>
+            <p class="AlertMsg" id="DateTimeAlert"></p>
+        </div>
+
+        <div class="DashItem" id="Temp">
+            <h2>Temperature</h2>
+            <table class="center_table_3">
+                <tbody>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><h4>Outdoor</h4></td>
+                    <td class="table_item_3"><h4>Spectro</h4></td>
+                    <td class="table_item_3"><h4>OpsSetPoint</h4></td>
+                  </tr>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><p id="TempOutdoor"></p></td>
+                    <td class="table_item_3"><p id="TempSpectrometer"></p></td>
+                    <td class="table_item_3"><p>20 ºC</p></td>
+                  </tr>
+                </tbody>
+            </table>
+			<p class="AlertMsg" id="TempAlert"></p>
+        </div>
+
+        <div class="DashItem" id="Electronics">
+            <h2>Electronics Status</h2>
+            <div class="DashElement">
+            <h4>Humidity</h4>
+            <p id="HumidityOnElectronics"></p>
+            </div>
+            <div class="DashElement">
+            <h4>Temperature</h4>
+            <p id="TempElectronics"></p>
+            </div>
+            <div class="DashElement">
+            <h4>TempNoise</h4>
+            <p id="TempSpectrometerNoise"></p>
+            </div>
+            <p class="AlertMsg" id="ElectronicsAlert"></p>
+        </div>
+    
+    </div>
+
+    <div class="flex-container">
+        <div class="DashItem" id="Supply">
+            <h2>Supply Voltage</h2>
+            <p class="big_text" id="SupplyVoltage"></p>
+            <p class="AlertMsg" id="SupplyAlert"></p>
+        </div>
+
+        <div class="DashItem" id="Current">
+            <h2>Current Total</h2>
+            <p class="big_text" id="CurrentTotal"></p>
+            <p class="AlertMsg" id="CurrentAlert"></p>
+        </div>
+
+        <div class="DashItem" id="ElevationAngle">
+            <h2>Elevation Angle</h2>
+            <p id="ElevationAngle1"></p>
+            <p id="ElevationAngle2"></p>
+            <nt2>Last: </nt2><p id="ElevationAngle3"></p>
+            <p class="AlertMsg" id="ElevationAngleAlert"></p>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="DashItem" id="Peltier">
+            <h2>Peltier Power</h2>
+            <p class="big_text" id="PeltierPower"></p>
+            <p class="AlertMsg" id="PeltierAlert"></p>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="DashItem" id="InstrData">
+            <h2>Instrument</h2>
+            <div class="Instrument">
+			  <p class="nt">Name: AIRYX</p>
+			  <p class="nt">WL: 300 nm to 500 nm</p>
+			  <p class="nt">Location: FING-UDELAR</p>
+			  <p class="nt">Coordinates: Lat: -34.916º || Lon: -56.167º || Alt: 61 m</p>
+			  <p class="nt">Viewing direction: 270 deg - Ramírez Beach</p>
+            </div>
+        </div>
+    </div>
+	
+	<div class="flex-container">
+        <div class="DashItem" id="About">
+            <div class="Instrument">
+    			<h2>Applied Optics Group</h2>
+    			<div class="grafica-div">
+    				<!-- <img class="grafica-img" src="./logo.png" width="100px" height="200px"> -->
+    			</div>
+    			<p class="nt">Contact:</p>
+    			<p class="nt">efrins@fing.edu.uy || ncasabal@fing.edu.uy</p>
+            </div>
+        </div>
+    </div>
+	
+	<script src="./dashboard.js"></script>
+</body>
+
+</html>

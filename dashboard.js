@@ -101,12 +101,12 @@ function csvToArray(str, delimiter = " ") {
   document.getElementById('ElevationAngle3').innerHTML       = ElevationAngle3.toString() + " º";
 
   // Reseteo alertas
-  var TempAlert_msg           = 'For develop';
-  var ElectronicsAlert_msg    = 'For develop';
-  var SupplyAlert_msg         = 'For develop';
-  var CurrentAlert_msg        = 'For develop';
-  var ElevationAngleAlert_msg = 'For develop';
-  var PeltierAlert_msg        = 'For develop';
+  var TempAlert_msg           = '';
+  var ElectronicsAlert_msg    = '';
+  var SupplyAlert_msg         = '';
+  var CurrentAlert_msg        = '';
+  var ElevationAngleAlert_msg = '';
+  var PeltierAlert_msg        = '';
 
   document.getElementById('DateTimeAlert').innerHTML       = '';
   document.getElementById('TempAlert').innerHTML           = '';

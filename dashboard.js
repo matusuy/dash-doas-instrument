@@ -182,9 +182,9 @@ function csvToArray(str, delimiter = " ") {
   // 2212 MO: I need to understand better what this means, so for now I am going to comment this line
   //TempSpectrometerNoise < 5 ? pintarDiv('Electronics', 1) : pintarDiv('Electronics', 0);
 
-  if (HumidityOnElectronics > 75) {ElectronicsAlert_msg = ElectronicsAlert_msg + "\nnPotential wet day, corrosion problems";}
-  if (HumidityOnElectronics < 10) {ElectronicsAlert_msg = ElectronicsAlert_msg + "\nnPotential dry day, spark problems";}
-  if (TempElectronics > 55)       {ElectronicsAlert_msg = ElectronicsAlert_msg + "\nPotential problems of cooling can appear";}
+  if (HumidityOnElectronics > 75) {ElectronicsAlert_msg = ElectronicsAlert_msg + "\nnPotential wet day";}
+  if (HumidityOnElectronics < 10) {ElectronicsAlert_msg = ElectronicsAlert_msg + "\nnPotential dry day";}
+  if (TempElectronics > 55)       {ElectronicsAlert_msg = ElectronicsAlert_msg + "\nPotential problems of cooling";}
 
   if (ElectronicsAlert_msg === ''){
     pintarDiv('Electronics', 0);

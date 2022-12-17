@@ -10,11 +10,11 @@
     <div class="flex-container">
 
         <div class="DashItem" id="DateTime">
-            <h2>Date</h2>
+            <h2>Date-Time (Local Time)</h2>
             <table class="center_table_2">
                 <tbody>
                   <tr class="TableElement">
-                    <td class="table_item_3"><h4>Last</h4></td>
+                    <td class="table_item_3"><h4>Last data</h4></td>
                     <td class="table_item_2_3"><p id="Last"></p></td>
                   </tr>
                   <tr class="TableElement">
@@ -47,18 +47,20 @@
 
         <div class="DashItem" id="Electronics">
             <h2>Electronics Status</h2>
-            <div class="DashElement">
-            <h4>Humidity</h4>
-            <p id="HumidityOnElectronics"></p>
-            </div>
-            <div class="DashElement">
-            <h4>Temperature</h4>
-            <p id="TempElectronics"></p>
-            </div>
-            <div class="DashElement">
-            <h4>TempNoise</h4>
-            <p id="TempSpectrometerNoise"></p>
-            </div>
+            <table class="center_table_3">
+                <tbody>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><h4>Humidity</h4></td>
+                    <td class="table_item_3"><h4>Temperature</h4></td>
+                    <td class="table_item_3"><h4>TempNoise</h4></td>
+                  </tr>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><p id="HumidityOnElectronics"></p></td>
+                    <td class="table_item_3"><p id="TempElectronics"></p></td>
+                    <td class="table_item_3"><p id="TempSpectrometerNoise"></p></td>
+                  </tr>
+                </tbody>
+            </table>
             <p class="AlertMsg" id="ElectronicsAlert"></p>
         </div>
     
@@ -79,9 +81,20 @@
 
         <div class="DashItem" id="ElevationAngle">
             <h2>Elevation Angle</h2>
-            <p id="ElevationAngle1"></p>
-            <p id="ElevationAngle2"></p>
-            <nt2>Last: </nt2><p id="ElevationAngle3"></p>
+            <table class="center_table_3">
+                <tbody>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><h4>Last-2</h4></td>
+                    <td class="table_item_3"><h4>Last-1</h4></td>
+                    <td class="table_item_3"><h4>Last</h4></td>
+                  </tr>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><p id="ElevationAngle1"></p></td>
+                    <td class="table_item_3"><p id="ElevationAngle2"></p></td>
+                    <td class="table_item_3"><p id="ElevationAngle3"></p></td>
+                  </tr>
+                </tbody>
+            </table>
             <p class="AlertMsg" id="ElevationAngleAlert"></p>
         </div>
     </div>
@@ -101,7 +114,8 @@
 			  <p class="nt">Name: AIRYX</p>
 			  <p class="nt">WL: 300 nm to 500 nm</p>
 			  <p class="nt">Location: FING-UDELAR</p>
-			  <p class="nt">Coordinates: Lat: -34.916º || Lon: -56.167º || Alt: 61 m</p>
+			  <p class="nt">Coordinates: Lat: -34.916º || Lon: -56.167º</p>
+              <p class="nt">Altitude: 61 m</p>
 			  <p class="nt">Viewing direction: 270 deg - Ramírez Beach</p>
             </div>
         </div>
@@ -115,7 +129,8 @@
     				<!-- <img class="grafica-img" src="./logo.png" width="100px" height="200px"> -->
     			</div>
     			<p class="nt">Contact:</p>
-    			<p class="nt">efrins@fing.edu.uy || ncasabal@fing.edu.uy</p>
+    			<p class="nt">efrins@fing.edu.uy</p>
+                <p class="nt">ncasabal@fing.edu.uy</p>
             </div>
         </div>
     </div>

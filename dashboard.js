@@ -1,5 +1,10 @@
 // https://sebhastian.com/javascript-csv-to-array/
 // colors HTML: https://htmlcolorcodes.com/
+
+// Developed by liber-dovat: ldovat@fing.edu.uy, matusuy: mosorio@fing.edu.uy
+// https://github.com/matusuy/dash-doas-instrument
+// v1.0 2022-12-19
+
 const removeEmptyLines = str => str.split(/\r?\n/).filter(line => line.trim() !== '').join('\n');
 
 function parsear(){

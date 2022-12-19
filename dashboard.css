@@ -12,7 +12,7 @@ body {
   /*display: inline-block*/
   /*display: block;*/
   text-align: center;
-  font-size: 1.8em;
+  font-size: 2.7vh;
   border-style: solid;
   border-color: black;
   margin: 0.9vh 1.2vw 0.9vh 1.2vw;
@@ -62,7 +62,6 @@ h2, h4 {
 h4 {
   margin-top: 2vh;
 }
-
 
 .nt {
   text-align: center;

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Developed by Liber Dovat (liber-dovat): ldovat@fing.edu.uy, Matías Osorio (matusuy): mosorio@fing.edu.uy -->
+<!-- https://github.com/matusuy/dash-doas-instrument -->
+<!-- v1.0 2022-12-19 -->
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="ldovat@fing.edu.uy,mosorio@fing.edu.uy">
+    <title>Dashboard DOAS Instrument</title>
+    <!-- Custom CSS -->
+    <link href="./dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="flex-container">
+
+        <div class="DashItem" id="DateTime">
+            <h2>Date-Time (UY Time)</h2>
+            <table class="center_table_2">
+                <tbody>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><h4>Last data</h4></td>
+                    <td class="table_item_2_3"><p id="Last"></p></td>
+                  </tr>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><h4>NOW</h4></td>
+                    <td class="table_item_2_3"><p id="Now"></p></td>
+                  </tr>
+                </tbody>
+            </table>
+            <p class="AlertMsg" id="DateTimeAlert"></p>
+        </div>
+
+        <div class="DashItem" id="Temp">
+            <h2>Temperature</h2>
+            <table class="center_table_3">
+                <tbody>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><h4>Outdoor</h4></td>
+                    <td class="table_item_3"><h4>Spectro</h4></td>
+                    <td class="table_item_3"><h4>OpsSetPoint</h4></td>
+                  </tr>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><p id="TempOutdoor"></p></td>
+                    <td class="table_item_3"><p id="TempSpectrometer"></p></td>
+                    <td class="table_item_3"><p>20 ºC</p></td>
+                  </tr>
+                </tbody>
+            </table>
+			<p class="AlertMsg" id="TempAlert"></p>
+        </div>
+
+        <div class="DashItem" id="Electronics">
+            <h2>Electronics Status</h2>
+            <table class="center_table_3">
+                <tbody>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><h4>Humidity</h4></td>
+                    <td class="table_item_3"><h4>Temperature</h4></td>
+                    <td class="table_item_3"><h4>TempNoise</h4></td>
+                  </tr>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><p id="HumidityOnElectronics"></p></td>
+                    <td class="table_item_3"><p id="TempElectronics"></p></td>
+                    <td class="table_item_3"><p id="TempSpectrometerNoise"></p></td>
+                  </tr>
+                </tbody>
+            </table>
+            <p class="AlertMsg" id="ElectronicsAlert"></p>
+        </div>
+    
+    </div>
+
+    <div class="flex-container">
+        <div class="DashItem" id="Supply">
+            <h2>Supply Voltage</h2>
+            <p class="big_text" id="SupplyVoltage"></p>
+            <p class="AlertMsg" id="SupplyAlert"></p>
+        </div>
+
+        <div class="DashItem" id="Current">
+            <h2>Current Total</h2>
+            <p class="big_text" id="CurrentTotal"></p>
+            <p class="AlertMsg" id="CurrentAlert"></p>
+        </div>
+
+        <div class="DashItem" id="ElevationAngle">
+            <h2>Elevation Angle</h2>
+            <table class="center_table_3">
+                <tbody>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><h4>Last-2</h4></td>
+                    <td class="table_item_3"><h4>Last-1</h4></td>
+                    <td class="table_item_3"><h4>Last</h4></td>
+                  </tr>
+                  <tr class="TableElement">
+                    <td class="table_item_3"><p id="ElevationAngle1"></p></td>
+                    <td class="table_item_3"><p id="ElevationAngle2"></p></td>
+                    <td class="table_item_3"><p id="ElevationAngle3"></p></td>
+                  </tr>
+                </tbody>
+            </table>
+            <p class="AlertMsg" id="ElevationAngleAlert"></p>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="DashItem" id="Peltier">
+            <h2>Peltier Power</h2>
+            <p class="big_text" id="PeltierPower"></p>
+            <p class="AlertMsg" id="PeltierAlert"></p>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="DashItem" id="InstrData">
+            <h2>Instrument</h2>
+            <div class="Instrument">
+			  <p class="nt">Name: AIRYX</p>
+			  <p class="nt">WL: 300 nm to 462 nm</p>
+			  <p class="nt">Location: FING-UDELAR</p>
+			  <p class="nt">Coordinates: Lat: -34.916º || Lon: -56.167º</p>
+              <p class="nt">Altitude: 61 m</p>
+			  <p class="nt">Viewing direction: 270 deg - Ramírez Beach</p>
+            </div>
+        </div>
+    </div>
+	
+	<div class="flex-container">
+        <div class="DashItem" id="About">
+            <div class="Instrument">
+    			<h2>Applied Optics Group</h2>
+				<p>Atmospheric Remote Sensing division</p>
+    			<div class="grafica-div">
+    				<!-- <img class="grafica-img" src="./logo.png" width="100px" height="200px"> -->
+    			</div>
+    			<p class="nt">Contact:</p>
+    			<p class="nt">efrins@fing.edu.uy || ncasabal@fing.edu.uy</p>
+				<p class="nt">mosorio@fing.edu.uy</p>
+            </div>
+        </div>
+    </div>
+	
+	<script src="./dashboard.js"></script>
+</body>
+
+</html>
